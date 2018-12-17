@@ -1,17 +1,17 @@
-#include "Price.h"
+п»ї#include "Price.h"
 #include <cstdlib>
 #define SIZE 8
 
-//сортирвока по имени
+//СЃРѕСЂС‚РёСЂРІРѕРєР° РїРѕ РёРјРµРЅРё
 int cmp(const void *f, const void *l) {
 	return ((Price*)f)->get_name() > ((Price*)l)->get_name();
 }
 
-//счиытваем данные
+//СЃС‡РёС‹С‚РІР°РµРј РґР°РЅРЅС‹Рµ
 void read(Price *p) {
 	for (unsigned i = 0; i < SIZE; ++i) {
 		try {
-			cout << "Имя\nМагазин\nСтоимость\n";
+			cout << "РРјСЏ\nРњР°РіР°Р·РёРЅ\nРЎС‚РѕРёРјРѕСЃС‚СЊ\n";
 			cin >> p[i];
 		}
 		catch (const Exception& exc) {
@@ -22,19 +22,19 @@ void read(Price *p) {
 	qsort(p, SIZE, sizeof(Price), cmp);
 }
 
-//поиск
+//РїРѕРёСЃРє
 void printBy(Price *p, const string& name) {
 
 	int i;
 	bool flag = true;
-	/*поиск с конца, если слово ближе к концу*/
+	/*РїРѕРёСЃРє СЃ РєРѕРЅС†Р°, РµСЃР»Рё СЃР»РѕРІРѕ Р±Р»РёР¶Рµ Рє РєРѕРЅС†Сѓ*/
 	for (i = 0; i < SIZE; ++i) {
 		if (p[i].get_name() == name) {
 			cout << p[i] << '\n';
 			flag = false;
 		}
 	}
-	if (flag) cout << "Не нашли";
+	if (flag) cout << "РќРµ РЅР°С€Р»Рё";
 
 }
 int main() {
@@ -42,13 +42,13 @@ int main() {
 	Price p[SIZE];
 	int a;
 	for (;;) {
-		cout << "\n1. Считать\n2. Найти\n3. Выход\n";
+		cout << "\n1. РЎС‡РёС‚Р°С‚СЊ\n2. РќР°Р№С‚Рё\n3. Р’С‹С…РѕРґ\n";
 		cin >> a;
 		if (a == 1) {
 			read(p);
 		}
 		else if (a == 2) {
-			cout << "Введите название\n";
+			cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ\n";
 			string name;
 			cin >> name;
 			printBy(p, name);
